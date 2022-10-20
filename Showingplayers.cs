@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace ShowPlayer
 {
@@ -32,8 +32,8 @@ namespace ShowPlayer
             }
            if(Ax == Cx || Ay == Cy || Bx == Cx || Cy == By)
             {
-                Bx = rand.Next(-10, 10);
-                By = rand.Next(-10, 10);
+                Cx = rand.Next(-10, 10);
+                Cy = rand.Next(-10, 10);
             }
 
             Console.WriteLine(
