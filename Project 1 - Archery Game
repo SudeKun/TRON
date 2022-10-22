@@ -1,0 +1,181 @@
+
+Code / Project	:  CME1251 / 1
+Year / Semester	:  2022-2023 Fall Semester 
+Duration		:  4 weeks
+
+
+Project:  Archery Game
+
+The aim of the project is to develop an archery game with three opponent
+archers. User (archer A) and two other opponents (B and C) take shots at 
+each other with different types of arrows. 
+
+General Information
+
+The game area coordinates are -10 to 10 grid in x and y.
+
+Game Initialization
+
+1. The first archer (A) represents the user. User enters the coordinates of his/her character. The program should control the validity of the location.
+
+2. The second and third archers are placed in random locations in the game area. The archers should be shown on the coordinate plane.
+
+3. Each archer has unique arrow and shield set. There are three types of arrows that give different damages to different shields: fire arrows (FA), poison arrows (PA), and iron-head arrows (IA). 
+
+    Three types of shields (Heater, Wankel and Celtic) are available, which are made from different materials and have different shapes and protection against different arrows. 
+
+Set 1		Iron-head arrow (IA)	 
+	Celtic shield	 
+Set 2		Poison arrow (PA)	 
+	Wankel shield	 
+Set 3		Fire arrow (FA)	 
+	Heater shield	 
+
+     The archer with FA always wins against PA, PA against IA, and IA against FA. 
+ 
+4. Each archer has different health state (60, 80 or 100), initiated randomly at the beginning of the game.
+
+Game Playing Rules
+
+1. There are two rounds of attacks in each game. Each attack contains only 2 archers. In the first round, the closest two archers shoot at each other. After that, the winner and the other archer shoot at each other.   
+
+2. An arrow can travel max. 15 units. Otherwise, there is no attack.
+
+3. Each attack decreases 25 health points from the winner. The health point of the loser becomes zero.  
+
+4. In each attack, only the winner gains some score points with respect to the following formula. 
+
+    Attack Score = 10 * Manhattan_distance_between_archers + (100 - Archer's_health)
+
+5. At the end of the game; status, health and scores of each archer must be printed on the screen. It should also be determined which archer (A or B or C) has the maximum score. 
+
+
+
+
+
+
+Sample Game  Screens
+
+
+Example 1
+	
+Example 2
+
+
+Enter the location of A:
+AX: 0 
+AY: 0
+
+A: (0,0)  Set 3  Health:100  
+B: (3,3)  Set 2  Health:60
+C: (-4,6) Set 1  Health:80
+
+   +----------^----------+
+ 10|..........|..........|
+  9|..........|..........|
+  8|..........|..........|
+  7|..........|..........|
+  6|......C...|..........|
+  5|..........|..........|
+  4|..........|..........|
+  3|..........|..B.......|
+  2|..........|..........|
+  1|..........|..........|
+  0|----------A---------->
+ -1|..........|..........|
+ -2|..........|..........|
+ -3|..........|..........|
+ -4|..........|..........|
+ -5|..........|..........|
+ -6|..........|..........|
+ -7|..........|..........|
+ -8|..........|..........|
+ -9|..........|..........|
+-10|..........|..........|
+   +---------------------+
+    098765432101234567890
+	
+Enter the location of A:
+AX: -1 
+AY: -5
+
+A: (-1,-5) Set 2  Health:80  
+B: (7,8)   Set 1  Health:60
+C: (-6,-4) Set 3  Health:100
+
+   +----------^----------+
+ 10|..........|..........|
+  9|..........|..........|
+  8|..........|......B...|
+  7|..........|..........|
+  6|..........|..........|
+  5|..........|..........|
+  4|..........|..........|
+  3|..........|..........|
+  2|..........|..........|
+  1|..........|..........|
+  0|----------+---------->
+ -1|..........|..........|
+ -2|..........|..........|
+ -3|..........|..........|
+ -4|....C.....|..........|
+ -5|.........A|..........|
+ -6|..........|..........|
+ -7|..........|..........|
+ -8|..........|..........|
+ -9|..........|..........|
+-10|..........|..........|
+   +---------------------+
+    098765432101234567890
+
+
+
+Round 1: A-B 
+
+A: Survivor     Health:75  Score:85 
+B: Defeated     Health:0   Score:0
+C: Non-fighter  Health:80  Score:0
+
+
+Round 2: A-C 
+
+A: Defeated     Health:0   Score:85 
+B: Defeated     Health:0   Score:0
+C: Survivor     Health:55  Score:145
+
+C has the maximum score (145)  
+
+
+
+ 	
+Round 1: A-C 
+
+A: Defeated     Health:0    Score:0 
+B: Non-fighter  Health:60   Score:0
+C: Survivor     Health:100  Score:60
+
+
+Round 2: C-B 
+
+Too distant, no attack
+
+C has the maximum score (60)  
+
+
+
+
+Suggested Weekly Program
+
+1. Understanding the game. Discussing and designing solution alternatives. Drawing flowchart.
+2. Creating the necessary variables, screen. Drawing archers on the coordinate plane. 
+3. Playing the game with all rules. Shooting rounds, results.
+4. Remaining parts of the game. Testing/debugging.
+
+ 
+
+First Evaluation:  21.10.2022  
+Progress Report: 21.10.2022
+	 
+Final Evaluation:  04.11.2022   (powerpoint + poster)
+Final Report:        04.11.2022                           
+
