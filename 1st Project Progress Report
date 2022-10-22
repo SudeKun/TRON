@@ -1,0 +1,83 @@
+DOKUZ EYLUL UNIVERSITY
+ENGINEERING FACULTY
+DEPARTMENT OF COMPUTER ENGINEERING
+						  		
+
+
+CME1251 PROJECT BASED LEARNING – I
+PROGRESS REPORT
+PROJECT – I
+
+
+
+
+
+By 
+Sercan KAŞLI 
+Sude KÜNDÜROĞLU 
+Zübeyde Elif ARAL
+Emre KERMAN
+
+
+
+Lecturers
+Assoc. Prof. Derya BİRANT
+Özlem ŞEKER
+
+21.10.2022
+
+
+CHAPTER ONE
+PROGRESS SUMMARY
+1.1	Work Done
+Emre Kerman: I designed the code which makes sure there is no duplicate sets or values of HP. I made it happen by randomizing one single variable which represet all posible outcomes in which there are no repetitions. i.e  if randHP = 1 it means that aHP = 60, bHP = 80 and cHP = 100. Also designed the algorithm for choosing the closest opponents. Then I write the code for how rounds work and scoreboards in which every opponent has their score, HP and state variables for each round. The scoreboard simply shows these variables after each round accordingly.
+
+Sercan Kaşlı:---
+
+Sude Kündüroğlu : I helped with flowchart (distance problem, ending and editing etc.) and I drew a flowchart but my flowchart was too simple. Also I wrote game’s coordinate plane code and showed players (A,B,C).
+
+Zübeyde Elif Aral: In our group, each member drew a flowchart.  Then we discussed whose drawing was the best. For now, we chose my flowchart, but we needed to rework it. After that we ended up dividing the codes in three parts. We wrote a code which takes input location of A then shows random health state, random set, and random location.
+ 
+
+1.2	Work in Progress
+Emre Kerman: I am trying to find bugs/logical errors in the code which may show A, B or C out of the bounds of the map/wrong places. Also trying to make the code “Monkey Test proof”.
+
+Sercan Kaşlı:---
+
+Sude Kündüroğlu: Right now I’m trying to make algorithm to calculate distence of players and select the least of it. 
+
+Zübeyde Elif Aral: My teammates and I each decided to write the rest of the game ourselves. Then we discussed whose game would be the most suitable for this project.  So know I am trying to write round 1 code.
+1.3	Work to Be Done
+Emre Kerman: Even though I searched and find a way to pass the Monkey Test, I am not sure if that is accepted. So if not I have to find a substitute. I am going to add more comments for better communication. I am going to code a better looking scoreboard which alligns the text so that it doesn’t look bad.
+ Also I am going to design a poster for the game since it is a hobby of mine.
+
+Sercan Kaşlı:---
+
+Sude Kündüroğlu: I’m going to make presentation of this project and help others in code. Maybe adding some features in game like colors.
+
+Zübeyde Elif Aral: Our flowchart was not well organized, therefore I needed to rework and make it more complete. Also, I needed to use Round 1 and Round 2 codes. After that I had to make sure whether my codes would be passing the monkey test or not.  If my codes do not pass the monkey test, I must find and correct the mistakes. After each member wrote a code, we discussed which one was the most suitable.
+
+
+CHAPTER TWO
+ALGORITHMS AND SOLUTION STRATEGIES
+ 
+Emre Kerman: To prevent duplicate HPs and sets, firstly I calculated all the posible outcomes which is 6 for HPs and also 6 for sets. Instead of randomizing HP or set of A then B and then C seperately, only randomizing a singular variable called randHP which symbolized the HP values of A, B and C made sure there were no duplicates. Here is the said part of the flowchart: 
+
+Sercan Kaşlı:---
+
+Sude Kündüroğlu: In flowchart I tried to solve distence calculation problem because I couldn’t show in my mind in flowchart. First I calculate all of players distence and assign to a variable one by one. First I find the minimum distence of those three distence and then I compare. If minimum distence little or equal to 15px player continues the game. If not, game finishes with no attack. So this is my part of this flowchart:
+
+Zübeyde Elif Aral: Each member make different algortihm and solution strategies for this project. And we discuss solution method and combined them. I wrote a code which shows random health state and random set. First ı try to make code which give “a” random value then give “b” random value. if these two value are equal give new value but we did not allow to use for loop this solution stratigies is impractical. So my team mate suggest that ıf we wrote all possibility for sets and health state we do not need to use for loop. So I wrote code again thanks to my team mates strategies.
+
+
+CHAPTER THREE
+PROBLEMS ENCOUNTERED
+
+Emre Kerman: Since we are not allowed to use loops and coordinates of B and C is random we can’t control if they overlap. We can check if the coordinates are equal and if it is we can reroll finite times without loops. Even if we write if statement until the end of time there would be still a chance that they overlap again. In practicality this probably would not happen but it bothers me to know. Right now if two opponents overlap only one of them will show up in the map. i.e. A and C were to overlap since the order of print commands is A, B, C; A would be overwritten as C, so that you would only see B and C in the map.
+
+Sercan Kaşlı:---
+
+Sude Kündüroğlu: When I started to code coordinate plane, I didn’t know about how to show players in the plane. First I asked about this problem to a techaer and he give me a clue and I solve rest of it by myself but I wrote the code wrong place so we solve that problem with changing codes place.
+
+Zübeyde Elif Aral: When the random set codes were printing on the screen they appeared as crooked instead of straight and down lines as they should and I wasn’t able to find a solution yet. Also, I need to change my solution strategies when I write a random health state and random set code. Because we are not allowed for using loop.
+
