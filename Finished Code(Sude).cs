@@ -7,24 +7,26 @@ namespace finished
         static void Main(string[] args)
         {
             //COORDINATE VARIABLES
-            int Ax, Ay, Bx, By, Cx, Cy;
+            string ax, ay;
+            int Ax = 0, Ay = 0, Bx, By, Cx, Cy;
 
             //DISTENCE VARIABLES
             int man_ab, man_bc, man_ac;
-            double euc_ab,euc_bc,euc_ac;
+            double euc_ab, euc_bc, euc_ac;
 
             //HEALTH VARIABLES
             int hp, hpa = 0, hpb = 0, hpc = 0;
 
             //SET VARIABLES
             int set;
-            string c = (" "), b = (" "), a = (" ") ;
+            string c = (" "), b = (" "), a = (" ");
 
             //STATEMENT VARIABLES
-            string cst= (" "), bst= (" "), ast= (" ");
+            string cst = (" "), bst = (" "), ast = (" ");
+            bool no_fight=false;
 
             //SCORE STATEMENTS
-            int score_a = 0, score_b = 0,score_c = 0;
+            int score_a = 0, score_b = 0, score_c = 0, max_score = 0;
 
             //COORDINATES OF B AND C
             Random rand = new Random();
@@ -33,11 +35,31 @@ namespace finished
             Cx = rand.Next(-10, 11);
             Cy = rand.Next(-10, 11);
 
-            //TAKING COORDINATES FROM PLAYER (A)
+            //TAKING COORDINATES FROM PLAYER (A) AND CHECKING
             Console.Write("Ax:");
-            Ax = Convert.ToInt32(Console.ReadLine());
+            ax = Console.ReadLine();
+            bool result = int.TryParse(ax, out Ax);
+            //bool result = Char.IsDigit(ax, 0);
+            if (result) { Ax = Convert.ToInt32(ax); }
+            else
+            {
+                Console.WriteLine("You wrote wrong!");
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
+
+            ///////////////////////////////////////////////////
             Console.Write("Ay:");
-            Ay = Convert.ToInt32(Console.ReadLine());
+            ay = Console.ReadLine();
+            result = int.TryParse(ay, out Ay);
+            //result= Char.IsDigit(ay, 0);
+            if (result) { Ay = Convert.ToInt32(ay); }
+            else
+            {
+                Console.WriteLine("You wrote wrong!");
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
 
             //CHEKING COORDINATES
             if ((Ax > 10 || Ay > 10) || (Ax < -10 || Ax < -10))
@@ -85,7 +107,7 @@ namespace finished
             euc_bc = Math.Sqrt(Math.Pow((Bx - Cx), 2) + Math.Pow((By - Cy), 2));
 
             //MANHATTAN DISTENCE CALCULATION
-            man_ab = Math.Abs(Bx - Ax)+Math.Abs(By - Ay);
+            man_ab = Math.Abs(Bx - Ax) + Math.Abs(By - Ay);
             man_ac = Math.Abs(Ax - Cx) + Math.Abs(Ay - Cy);
             man_bc = Math.Abs(Cx - Bx) + Math.Abs(Cy - By);
 
@@ -133,23 +155,23 @@ namespace finished
 
             //ROUND 1
             Console.Write("ROUND 1: ");
-            double min_euc = Math.Min(Math.Min(euc_ab, euc_ac),euc_bc);
-            if (min_euc <= 15)
-            {
-                if (min_euc == euc_ab) { 
+            double min_euc = Math.Min(Math.Min(euc_ab, euc_ac), euc_bc);
+            if (min_euc <= 15){
+                if (min_euc == euc_ab)
+                {
                     Console.WriteLine("A - B");
                     cst = "NON-FIGHTER";
                     score_c = 0;
-                    if (a=="set 1"&&b=="set 2" || a == "set 2" && b == "set 3" || a == "set 3" && b == "set 1")
+                    if (a == "set 1" && b == "set 2" || a == "set 2" && b == "set 3" || a == "set 3" && b == "set 1")
                     {
                         hpb += 25; hpa = 0;
                         ast = "DEFEATED";
                         bst = "SURVIVOR";
                         score_a = 0;
-                        score_b = 10*man_ab + (100-hpb);
+                        score_b = 10 * man_ab + (100 - hpb);
                         min_euc = euc_bc;
                     }
-                    else if(a == "set 2" && b == "set 1" || a == "set 3" && b == "set 2" || a == "set 1" && b == "set 3")
+                    else if (a == "set 2" && b == "set 1" || a == "set 3" && b == "set 2" || a == "set 1" && b == "set 3")
                     {
                         hpa += 25; hpb = 0;
                         ast = "SURVIVOR";
@@ -159,8 +181,10 @@ namespace finished
                         min_euc = euc_ac;
                     }
                 }
-                else if (min_euc == euc_ac) { 
-                    if (euc_ac == euc_ab) { 
+                else if (min_euc == euc_ac)
+                {
+                    if (euc_ac == euc_ab)
+                    {
                         Console.WriteLine("A - B");
                         cst = "NON-FIGHTER";
                         score_c = 0;
@@ -182,8 +206,9 @@ namespace finished
                             score_a = 10 * man_ab + (100 - hpa);
                             min_euc = euc_ac;
                         }
-                    } 
-                    else { 
+                    }
+                    else
+                    {
                         Console.WriteLine("A - C");
                         bst = "NON-FIGHTER";
                         score_b = 0;
@@ -192,8 +217,8 @@ namespace finished
                             hpc += 25; hpa = 0;
                             ast = "DEFEATED";
                             cst = "SURVIVOR";
-                            score_a=0;
-                            score_c= 10 * man_ac + (100 - hpc);
+                            score_a = 0;
+                            score_c = 10 * man_ac + (100 - hpc);
                             min_euc = euc_bc;
                         }
                         else if (a == "set 2" && c == "set 1" || a == "set 3" && c == "set 2" || a == "set 1" && c == "set 3")
@@ -205,10 +230,12 @@ namespace finished
                             score_a = 10 * man_ac + (100 - hpa);
                             min_euc = euc_ab;
                         }
-                    } 
+                    }
                 }
-                else if (min_euc == euc_bc) { 
-                    if (euc_bc == euc_ab) { 
+                else if (min_euc == euc_bc)
+                {
+                    if (euc_bc == euc_ab)
+                    {
                         Console.WriteLine("A - B");
                         cst = "NON-FIGHTER";
                         score_c = 0;
@@ -230,8 +257,9 @@ namespace finished
                             score_a = 10 * man_ab + (100 - hpa);
                             min_euc = euc_ac;
                         }
-                    } 
-                    else { 
+                    }
+                    else
+                    {
                         Console.WriteLine("B - C");
                         ast = "NON-FIGHTER";
                         score_a = 0;
@@ -253,29 +281,31 @@ namespace finished
                             score_b = 10 * man_bc + (100 - hpb);
                             min_euc = euc_ab;
                         }
-                    } 
+                    }
                 }
                 else { Console.WriteLine("Sorry machine error"); }
             }
-            else { Console.WriteLine("All players are too distant so, No Fight!"); }
+            else { no_fight = true; }
 
-            Console.WriteLine("A:"+ ast + " \tHealth:" + hpa + " \tScore:" + score_a + " "); 
-            Console.WriteLine("B:" + bst + " \tHealth:" + hpb + " \tScore:" + score_b + " ");
-            Console.WriteLine("C:" + cst + " \tHealth:" + hpc + " \tScore:" + score_c + " ");
+            if (no_fight == false) {
+                Console.WriteLine("A:" + ast + " \tHealth:" + hpa + " \tScore:" + score_a + " ");
+                Console.WriteLine("B:" + bst + " \tHealth:" + hpb + " \tScore:" + score_b + " ");
+                Console.WriteLine("C:" + cst + " \tHealth:" + hpc + " \tScore:" + score_c + " "); }
+            else if (no_fight == true) {Console.WriteLine("All players are too distant so, No Fight!"); }
             Console.ReadKey();
 
             //ROUND 2
+            Console.Write("ROUND 2: ");
+            no_fight = false;
             if (min_euc <= 15){
                 if (min_euc == euc_ab)
                 {
                     Console.WriteLine("A - B");
-                    score_c = 0;
                     if (a == "set 1" && b == "set 2" || a == "set 2" && b == "set 3" || a == "set 3" && b == "set 1")
                     {
                         hpb += 25; hpa = 0;
                         ast = "DEFEATED";
                         bst = "SURVIVOR";
-                        score_a = 0;
                         score_b = 10 * man_ab + (100 - hpb);
                     }
                     else if (a == "set 2" && b == "set 1" || a == "set 3" && b == "set 2" || a == "set 1" && b == "set 3")
@@ -283,22 +313,60 @@ namespace finished
                         hpa += 25; hpb = 0;
                         ast = "SURVIVOR";
                         bst = "DEFEATED";
-                        score_b = 0;
                         score_a = 10 * man_ab + (100 - hpa);
                     }
                 }
-            }
-                else if(min_euc == euc_ac)
+                else if (min_euc == euc_ac)
                 {
-
+                    Console.WriteLine("A - C");
+                    if (a == "set 1" && c == "set 2" || a == "set 2" && c == "set 3" || a == "set 3" && c == "set 1")
+                    {
+                        hpc += 25; hpa = 0;
+                        ast = "DEFEATED";
+                        cst = "SURVIVOR";
+                        score_c = 10 * man_ac + (100 - hpc);
+                    }
+                    else if (a == "set 2" && c == "set 1" || a == "set 3" && c == "set 2" || a == "set 1" && c == "set 3")
+                    {
+                        hpa += 25; hpc = 0;
+                        ast = "SURVIVOR";
+                        cst = "DEFEATED";
+                        score_a = 10 * man_ac + (100 - hpa);
+                    }
                 }
-                else if(min_euc == euc_bc)
+                else if (min_euc == euc_bc)
                 {
-
+                    Console.WriteLine("B - C");
+                    if (b == "set 1" && c == "set 2" || b == "set 2" && c == "set 3" || b == "set 3" && c == "set 1")
+                    {
+                        hpc += 25; hpb = 0;
+                        bst = "DEFEATED";
+                        cst = "SURVIVOR";
+                        score_c = 10 * man_bc + (100 - hpc);
+                    }
+                    else if (b == "set 2" && c == "set 1" || b == "set 3" && c == "set 2" || b == "set 1" && c == "set 3")
+                    {
+                        hpb += 25; hpc = 0;
+                        bst = "SURVIVOR";
+                        cst = "DEFEATED";
+                        score_b = 10 * man_bc + (100 - hpb);
+                    }
                 }
-
-
             }
-
+            else { no_fight = true; }
+            
+            if (no_fight==false) {
+                Console.WriteLine("A:" + ast + " \tHealth:" + hpa + " \tScore:" + score_a + " ");
+                Console.WriteLine("B:" + bst + " \tHealth:" + hpb + " \tScore:" + score_b + " ");
+                Console.WriteLine("C:" + cst + " \tHealth:" + hpc + " \tScore:" + score_c + " "); }
+            else if(no_fight==true){ Console.WriteLine("All players are too distant so, No Fight!"); }
+            
+            max_score = Math.Max(Math.Max(score_a, score_b), score_c);
+            if (max_score == score_a) { Console.WriteLine("The Winner Is: A"+"\tScore:"+score_a); }
+            else if (max_score == score_b) { Console.WriteLine("The Winner Is: B" + "\tScore:" + score_b); }
+            else if (max_score == score_c) { Console.WriteLine("The Winner Is: C" + "\tScore:" + score_c); }
+            else { Console.WriteLine("Sorry machine error"); }
+            Console.ReadKey();
+        }
     }
 }
