@@ -31,9 +31,9 @@ namespace finished
             int score_a = 0, score_b = 0, score_c = 0, max_score = 0;
 
             //COLOR STATEMENTS
-            var set1=ConsoleColor.Red;
-            var set2=ConsoleColor.Cyan;
-            var set3=ConsoleColor.Yellow;
+            var set1=ConsoleColor.Yellow;
+            var set2=ConsoleColor.Magenta;
+            var set3=ConsoleColor.Red;
             var reset=ConsoleColor.White;
 
 
@@ -62,6 +62,7 @@ namespace finished
             }
 
             ///////////////////////////////////////////////////
+            Console.SetCursorPosition(8,0);
             Console.Write("Ay:");
             ay = Console.ReadLine();
             //result = int.TryParse(ay, out Ay);
@@ -179,7 +180,7 @@ namespace finished
                 "  -10 9 8 7 6 5 4 3 2 1 0 1 2 3 4 5 6 7 8 9 10\r\n");
             ///////////////////////////////////////////////////////////////////////
             ////////////////////////////COLOR AND POSITION FOR A////////////////////////////
-            Console.SetCursorPosition((Ax*2) +25, 16 - Ay);
+            Console.SetCursorPosition((Ax*2) +25, 15 - Ay);
             if(a=="Set 1") Console.ForegroundColor=set1;
             else if(a=="Set 2") Console.ForegroundColor=set2;
             else Console.ForegroundColor=set3;
@@ -187,7 +188,7 @@ namespace finished
             Console.WriteLine("A");
 
             ////////////////////////////COLOR AND POSITION FOR B////////////////////////////
-            Console.SetCursorPosition((Bx*2) + 25, 16 - By);
+            Console.SetCursorPosition((Bx*2) + 25, 15 - By);
             if(b=="Set 1") Console.ForegroundColor=set1;
             else if(b=="Set 2") Console.ForegroundColor=set2;
             else Console.ForegroundColor=set3;
@@ -195,7 +196,7 @@ namespace finished
             Console.WriteLine("B");
 
             ////////////////////////////COLOR AND POSITION FOR C////////////////////////////
-            Console.SetCursorPosition((Cx*2) + 25, 16 - Cy);
+            Console.SetCursorPosition((Cx*2) + 25, 15 - Cy);
             if(c=="Set 1") Console.ForegroundColor=set1;
             else if(c=="Set 2") Console.ForegroundColor=set2;
             else Console.ForegroundColor=set3;
