@@ -106,7 +106,8 @@ namespace archer
 
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\n#MONKEY TEST#\n");
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                //Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Cyan;
 
                 Console.ReadKey();
                 return;
@@ -634,7 +635,7 @@ namespace archer
                             cScore = cScore + (10 * mandbc + (100 - cHP));
                             c2State = "SURVIVOR";
                             b2State = "DEFEATED";
-                            a2State = "NON-FIGHTER;";
+                            a2State = "NON-FIGHTER";
                             versus = 2;//A vs C
                         }
                     }
