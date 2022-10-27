@@ -7,6 +7,12 @@ namespace archer
         static void Main(string[] args)
         {
 
+            Console.SetWindowSize(Console.WindowWidth, Console.WindowHeight * 2);
+
+            Console.ForegroundColor = ConsoleColor.Green;//Changes font colour
+
+            Console.Clear();
+
             Random rnd = new Random();//Initialization for Random.Next()
 
             //SCORE VARIABLES
@@ -28,6 +34,9 @@ namespace archer
             string tempx;
             string tempy;
 
+            bool checkx;
+            bool checky;
+
             //COORDINATES
             int ax = 0, ay = 0;// A(x,y)
             int bx = 0, by = 0;// B(x,y)
@@ -35,17 +44,51 @@ namespace archer
 
             //COORDINATES OF A
             Console.WriteLine("Enter X:");
-            //ax = Convert.ToInt32(Console.ReadLine());
-            
-            tempx = Console.ReadLine();
-            bool checkx = int.TryParse(tempx,out ax);
 
-            
+            Console.ForegroundColor = ConsoleColor.White;//Changes font colour
+
+            tempx = Console.ReadLine();
+
+            if(tempx == "10" || tempx == "9" || tempx == "8" || tempx == "7" || tempx == "6" || tempx == "5" || tempx == "4" || tempx == "3" || tempx == "2" || tempx == "1" || tempx == "0" || tempx == "-1" || tempx == "-2" || tempx == "-2" || tempx == "-3" || tempx == "-4" || tempx == "-5" || tempx == "-6" || tempx == "-7" || tempx == "-8" || tempx == "-9" || tempx == "-10")
+            {
+                checkx = true;
+                ax = Convert.ToInt32(tempx);
+            }
+            else
+            {
+                checkx = false;
+            }
+
+            Console.ForegroundColor = ConsoleColor.Green;//Changes font colour
             Console.WriteLine("Enter Y:");
-            //ay = Convert.ToInt32(Console.ReadLine());
-            
+
+
+            Console.ForegroundColor = ConsoleColor.White;//Changes font colour
+
             tempy = Console.ReadLine();
-            bool checky = int.TryParse(tempy, out ay);
+
+            if (tempy == "10" || tempy == "9" || tempy == "8" || tempy == "7" || tempy == "6" || tempy == "5" || tempy == "4" || tempy == "3" || tempy == "2" || tempy == "1" || tempy == "0" || tempy == "-1" || tempy == "-2" || tempy == "-2" || tempy == "-3" || tempy == "-4" || tempy == "-5" || tempy == "-6" || tempy == "-7" || tempy == "-8" || tempy == "-9" || tempy == "-10")
+            {
+                checky = true;
+                ay = Convert.ToInt32(tempy);
+            }
+            else
+            {
+                checky = false;
+            }
+
+            Console.ForegroundColor = ConsoleColor.Green;//Changes font colour
+
+            if (ax < -10 || ax > 10)
+            {
+                checkx = false;
+            }
+
+            if (ay < -10 || ay > 10)
+            {
+                checky = false;
+            }
+
 
             if (checkx == true && checky == true)
             {
@@ -54,34 +97,35 @@ namespace archer
             else
             {
                 Console.Clear();
-                Console.WriteLine("monkey see, monkey do");
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("#MONKEY TEST#\n");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+
+                Console.WriteLine("X and Y are integer numbers between -10 and 10.");
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\n#MONKEY TEST#\n");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+
                 Console.ReadKey();
                 return;
             }
 
-            if(ax<-10 || ax > 10)
-            {
-                Console.WriteLine("X and Y values should be between -10 and 10.");
-                return;
-            }
-
-            if (ay < -10 || ay > 10)
-            {
-                Console.WriteLine("X and Y values should be between -10 and 10.");
-                return;
-            }
 
             //COORDINATES OF B AND C
-            bx = rnd.Next(-10, 10);
-            by = rnd.Next(-10, 10);
-            cx = rnd.Next(-10, 10);
-            cy = rnd.Next(-10, 10);
+            bx = rnd.Next(-10, 11);
+            by = rnd.Next(-10, 11);
+            cx = rnd.Next(-10, 11);
+            cy = rnd.Next(-10, 11);
+            
             /*FOR DEBUG
             bx = 10;
             by = 10;
             cx = 10;
             cy = 10;
             */
+
             //////////////////////
             //////////////////////
 
@@ -89,41 +133,46 @@ namespace archer
             int aHP = 0, bHP = 0, cHP = 0;// Health Points of A, B and C
 
             int randHP = 0;// This is for assigning random values of HP to A, B and C without repetition
-            randHP = rnd.Next(1, 6);// There are 6 posible permutations for HP for the values {60,80,100}
+            randHP = rnd.Next(1, 7);// There are 6 posible permutations for HP for the values {60,80,100}
 
-            switch (randHP)// Takes the random value 1 through 6 then assigns values accordingly
+            if (randHP == 1)// Takes the random value 1 through 6 then assigns values accordingly
             {
-                case 1:
-                    aHP = 60;
-                    bHP = 80;
-                    cHP = 100;
-                    break;
-                case 2:
-                    aHP = 60;
-                    bHP = 100;
-                    cHP = 80;
-                    break;
-                case 3:
-                    aHP = 80;
-                    bHP = 60;
-                    cHP = 100;
-                    break;
-                case 4:
-                    aHP = 80;
-                    bHP = 100;
-                    cHP = 60;
-                    break;
-                case 5:
-                    aHP = 100;
-                    bHP = 60;
-                    cHP = 80;
-                    break;
-                case 6:
-                    aHP = 100;
-                    bHP = 80;
-                    cHP = 60;
-                    break;
+                aHP = 60;
+                bHP = 80;
+                cHP = 100;
             }
+            else if (randHP == 2)
+            {
+                aHP = 60;
+                bHP = 100;
+                cHP = 80;
+
+            }
+            else if (randHP == 3)
+            {
+                aHP = 80;
+                bHP = 60;
+                cHP = 100;
+            }
+            else if (randHP == 4)
+            {
+                aHP = 80;
+                bHP = 100;
+                cHP = 60;
+            }
+            else if (randHP == 5)
+            {
+                aHP = 100;
+                bHP = 60;
+                cHP = 80;
+            }
+            else if (randHP == 6)
+            {
+                aHP = 100;
+                bHP = 80;
+                cHP = 60;
+            }
+
 
             //////////////////////
             //////////////////////
@@ -134,42 +183,45 @@ namespace archer
 
 
             int randSet = 0;// This is for assigning random values of sets to A, B and C without repetition
-            randSet = rnd.Next(1, 6);//Just like HP there are 6 permutations for sets {1,2,3}
+            randSet = rnd.Next(1, 7);//Just like HP there are 6 permutations for sets {1,2,3}
 
-            switch (randSet)// Takes the random value 1 through 6 then assigns values accordingly
+            if(randSet == 1)// Takes the random value 1 through 6 then assigns values accordingly
             {
-                case 1:
-                    aSet = 1;
-                    bSet = 2;
-                    cSet = 3;
-                    break;
-                case 2:
-                    aSet = 1;
-                    bSet = 3;
-                    cSet = 2;
-                    break;
-                case 3:
-                    aSet = 2;
-                    bSet = 1;
-                    cSet = 3;
-                    break;
-                case 4:
-                    aSet = 2;
-                    bSet = 3;
-                    cSet = 1;
-                    break;
-                case 5:
-                    aSet = 3;
-                    bSet = 1;
-                    cSet = 2;
-                    break;
-                case 6:
-                    aSet = 3;
-                    bSet = 2;
-                    cSet = 1;
-                    break;
+                aSet = 1;
+                bSet = 2;
+                cSet = 3;
             }
+            else if(randSet == 2)
+            {
+                aSet = 1;
+                bSet = 3;
+                cSet = 2;
 
+            }
+            else if(randSet == 3)
+            {
+                aSet = 2;
+                bSet = 1;
+                cSet = 3;
+            }
+            else if(randSet == 4)
+            {
+                aSet = 2;
+                bSet = 3;
+                cSet = 1;
+            }
+            else if(randSet == 5)
+            {
+                aSet = 3;
+                bSet = 1;
+                cSet = 2;
+            }
+            else if(randSet == 6)
+            {
+                aSet = 3;
+                bSet = 2;
+                cSet = 1;
+            }
 
 
             //////////////////////
@@ -178,12 +230,56 @@ namespace archer
             Console.Clear();
 
             //INFO FOR PLAYERS
-            Console.WriteLine("The ARCHER");
-            Console.WriteLine("A( " + (ax) + " , " + (ay) + " ) " + "\t HP : " + aHP + "\tSET : " + aSet);
-            Console.WriteLine("B( " + bx + " , " + by + " ) " + "\t HP : " + bHP + "\tSET : " + bSet);
-            Console.WriteLine("C( " + cx + " , " + cy + " ) " + "\t HP : " + cHP + "\tSET : " + cSet);
 
-            
+            Console.WriteLine(" [[[MELTDOWN]]]\n");
+            Console.ForegroundColor = ConsoleColor.Yellow;//Changes font colour
+
+            //GRAPH
+            Console.WriteLine("> A(     ,     )\t | HP :     |\t | SET :   |");
+            Console.WriteLine("> B(     ,     )\t | HP :     |\t | SET :   |");
+            Console.WriteLine("> C(     ,     )\t | HP :     |\t | SET :   |");
+
+
+            // A INFO
+            Console.SetCursorPosition(5, 2);
+            Console.WriteLine(ax);
+
+            Console.SetCursorPosition(11, 2);
+            Console.WriteLine(ay);
+
+            Console.SetCursorPosition(32, 2);
+            Console.WriteLine(aHP);
+
+            Console.SetCursorPosition(49, 2);
+            Console.WriteLine(aSet);
+
+            //B INFO
+            Console.SetCursorPosition(5, 3);
+            Console.WriteLine(bx);
+
+            Console.SetCursorPosition(11, 3);
+            Console.WriteLine(by);
+
+            Console.SetCursorPosition(32, 3);
+            Console.WriteLine(bHP);
+
+            Console.SetCursorPosition(49, 3);
+            Console.WriteLine(bSet);
+
+            //C INFO
+            Console.SetCursorPosition(5, 4);
+            Console.WriteLine(cx);
+
+            Console.SetCursorPosition(11, 4);
+            Console.WriteLine(cy);
+
+            Console.SetCursorPosition(32, 4);
+            Console.WriteLine(cHP);
+
+            Console.SetCursorPosition(49, 4);
+            Console.WriteLine(cSet);
+
+            Console.SetCursorPosition(0, 6);//Puts the cursor back where it is supposed to be
 
             //////////////////////
             //////////////////////
@@ -201,66 +297,69 @@ namespace archer
             int mandbc = Math.Abs(bx - cx) + Math.Abs(by - cy);//Manhattan Distance between B and C
 
             //////////////////////
-            //////////////////////
+            
 
+            //////////////////////
             //MAP FOR THE ARCHERS
+            //////////////////////
+            Console.ForegroundColor = ConsoleColor.White;//Changes font colour
             Console.WriteLine(
-                "   +----------^----------+\r\n " +
-                "10|..........|..........|\r\n  " +
-                "9|..........|..........|\r\n  " +
-                "8|..........|..........|\r\n  " +
-                "7|..........|..........|\r\n  " +
-                "6|..........|..........|\r\n  " +
-                "5|..........|..........|\r\n  " +
-                "4|..........|..........|\r\n  " +
-                "3|..........|..........|\r\n  " +
-                "2|..........|..........|\r\n  " +
-                "1|..........|..........|\r\n  " +
-                "0|----------+---------->\r\n " +
-                "-1|..........|..........|\r\n " +
-                "-2|..........|..........|\r\n " +
-                "-3|..........|..........|\r\n " +
-                "-4|..........|..........|\r\n " +
-                "-5|..........|..........|\r\n " +
-                "-6|..........|..........|\r\n " +
-                "-7|..........|..........|\r\n " +
-                "-8|..........|..........|\r\n " +
-                "-9|..........|..........|\r\n" +
-                "-10|..........|..........|\r\n" +
-                "   +---------------------+\r\n " +
-                "   098765432101234567890\r\n");
+                "   +--------------------^---------------------+\r\n " +
+                "10|. . . . . . . . . . | . . . . . . . . . . |\r\n  " +
+                "9|. . . . . . . . . . | . . . . . . . . . . |\r\n  " +
+                "8|. . . . . . . . . . | . . . . . . . . . . |\r\n  " +
+                "7|. . . . . . . . . . | . . . . . . . . . . |\r\n  " +
+                "6|. . . . . . . . . . | . . . . . . . . . . |\r\n  " +
+                "5|. . . . . . . . . . | . . . . . . . . . . |\r\n  " +
+                "4|. . . . . . . . . . | . . . . . . . . . . |\r\n  " +
+                "3|. . . . . . . . . . | . . . . . . . . . . |\r\n  " +
+                "2|. . . . . . . . . . | . . . . . . . . . . |\r\n  " +
+                "1|. . . . . . . . . . | . . . . . . . . . . | \r\n  " +
+                "0|--------------------+--------------------->\r\n " +
+                "-1|. . . . . . . . . . | . . . . . . . . . . |\r\n " +
+                "-2|. . . . . . . . . . | . . . . . . . . . . |\r\n " +
+                "-3|. . . . . . . . . . | . . . . . . . . . . |\r\n " +
+                "-4|. . . . . . . . . . | . . . . . . . . . . |\r\n " +
+                "-5|. . . . . . . . . . | . . . . . . . . . . |\r\n " +
+                "-6|. . . . . . . . . . | . . . . . . . . . . |\r\n " +
+                "-7|. . . . . . . . . . | . . . . . . . . . . |\r\n " +
+                "-8|. . . . . . . . . . | . . . . . . . . . . |\r\n " +
+                "-9|. . . . . . . . . . | . . . . . . . . . . |\r\n" +
+                "-10|. . . . . . . . . . | . . . . . . . . . . |\r\n" +
+                "   +------------------------------------------+\r\n " +
+                " -10-9-8-7-6-5-4-3-2-1 0 1 2 3 4 5 6 7 8 9 10\r\n");
+
+
 
             //PLACE A
-            Console.SetCursorPosition(ax + 14, 15 - ay);
+            Console.ForegroundColor = ConsoleColor.Green;//Changes font colour
+
+            Console.SetCursorPosition(((ax + 10) * 2 + 4), ((10 - ay) + 7));
             Console.WriteLine("A");
+
             //PLACE B
-            Console.SetCursorPosition(bx + 14, 15 - by);
+            Console.ForegroundColor = ConsoleColor.Red;
+
+            Console.SetCursorPosition(((bx + 10) * 2 + 4), ((10 - by) + 7));
             Console.WriteLine("B");
+
             //PLACE C
-            Console.SetCursorPosition(cx + 14, 15 - cy);
+            Console.SetCursorPosition((cx + 10) * 2 + 4, (10 - cy) + 7);
             Console.WriteLine("C");
 
-            Console.SetCursorPosition(0, 28);
-
-            Console.ReadKey();
-
             //////////////////////
+            Console.SetCursorPosition(0, 31);//Puts the cursor back where it is supposed to be
+            Console.ForegroundColor = ConsoleColor.Yellow;//Changes font colour
+            Console.ReadKey();
             //////////////////////
 
             // GAME STARTS FROM NOW ON
 
             //DISTANCE COMPARISONS
 
-            //double min = Math.Min(dab, Math.Min(dac, dbc));// Finds the minimum of dab, dac and dbc
-
-
-
             string r1 = "NO FIGHT";//Tells us which two fighters will fight in round 1
             string r2 = "NO FIGHT";//Tells us which two fighters will fight in round 2
 
-            
-
-      
             //For comparison lets start with dab or A vs B
             double min = dab;
 
@@ -280,358 +379,304 @@ namespace archer
                 versus = 3;//B vs C
             }
 
-            switch (versus)// Takes the versus value changes it to string accordingly for display purposes.
-            {
-                case 1:
-                    r1 = "A vs B";
-                    break;
-                case 2:
-                    r1 = "A vs C";
-                    break;
-                case 3:
-                    r1 = "B vs C";
-                    break;
-            }
 
+            if (versus == 1)// Takes the versus value changes it to string accordingly for scoreboard.
+            {
+                r1 = "A vs B";
+            }
+            else if (versus == 2)
+            {
+                r1 = "A vs C";
+            }
+            else if (versus == 3)
+            {
+                r1 = "B vs C";
+            }
 
             if (min > 15)// Check for reach (distance<15)
             {
-                Console.WriteLine("NO FIGHT\nARCHERS TOO DISTANT");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("[NO FIGHT] : ARCHERS TOO DISTANT");
+                Console.ForegroundColor = ConsoleColor.Yellow;//Changes font colour
+                Console.ReadKey();
             }
             else
             {
-                Console.WriteLine("ROUND 1 :\t" + r1);
-                switch (versus)
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.Write("[ROUND 1] : ");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(r1);
+                Console.ForegroundColor = ConsoleColor.Yellow;//Changes font colour
+                Console.ReadKey();
+
+                if (versus == 1)
                 {
-                    case 1://A VS B
-                        switch (randSet)
-                        {
-                            case 1://A WINS
-                                aHP = aHP - 25;
-                                bHP = 0;
-                                aScore = aScore + (10 * mandab + (100 - aHP));
-                                a1State = "SURVIVOR";
-                                b1State = "DEFEATED";
-                                c1State = "NON-FIGHTER";
-                                b2State = "DEFEATED";
-                                versus = 2;//A vs C
-                                min = dac;
-                                break;
-                            case 4://A WINS
-                                aHP = aHP - 25;
-                                bHP = 0;
-                                aScore = aScore + (10 * mandab + (100 - aHP));
-                                a1State = "SURVIVOR";
-                                b1State = "DEFEATED";
-                                c1State = "NON-FIGHTER";
-                                b2State = "DEFEATED";
-                                versus = 2;//A vs C
-                                min = dac;
-                                break;
-                            case 5://A WINS
-                                aHP = aHP - 25;
-                                bHP = 0;
-                                aScore = aScore + (10 * mandab + (100 - aHP));
-                                a1State = "SURVIVOR";
-                                b1State = "DEFEATED";
-                                c1State = "NON-FIGHTER";
-                                b2State = "DEFEATED";
-                                versus = 2;//A vs C
-                                min = dac;
-                                break;
-                            default://B WINS
-                                bHP = bHP - 25;
-                                aHP = 0;
-                                bScore = bScore + (10 * mandab + (100 - bHP));
-                                b1State = "SURVIVOR";
-                                a1State = "DEFEATED";
-                                c1State = "NON-FIGHTER";
-                                a2State = "DEFEATED";
-                                versus = 3;//B vs C
-                                min = dbc;
-                                break;
-                        }
-                        break;
-                    case 2://A VS C
-                        switch (randSet)
-                        {
-                            case 2://A WINS
-                                aHP = aHP - 25;
-                                cHP = 0;
-                                aScore = aScore + (10 * mandac + (100 - aHP));
-                                a1State = "SURVIVOR";
-                                c1State = "DEFEATED";
-                                b1State = "NON-FIGHTER";
-                                c2State = "DEFEATED";
-                                versus = 1;//A vs B
-                                min = dab;
-                                break;
-                            case 3://A WINS
-                                aHP = aHP - 25;
-                                cHP = 0;
-                                aScore = aScore + (10 * mandac + (100 - aHP));
-                                a1State = "SURVIVOR";
-                                c1State = "DEFEATED";
-                                b1State = "NON-FIGHTER";
-                                c2State = "DEFEATED";
-                                versus = 1;//A vs B
-                                min = dab;
-                                break;
-                            case 6://A WINS
-                                aHP = aHP - 25;
-                                cHP = 0;
-                                aScore = aScore + (10 * mandac + (100 - aHP));
-                                a1State = "SURVIVOR";
-                                c1State = "DEFEATED";
-                                b1State = "NON-FIGHTER";
-                                c2State = "DEFEATED";
-                                versus = 1;//A vs B
-                                min = dab;
-                                break;
-                            default://C WINS
-                                cHP = cHP - 25;
-                                aHP = 0;
-                                cScore = cScore + (10 * mandac + (100 - cHP));
-                                c1State = "SURVIVOR";
-                                a1State = "DEFEATED";
-                                b1State = "NON-FIGHTER";
-                                a2State = "DEFEATED";
-                                versus = 3;//B vs C
-                                min = dbc;
-                                break;
-                        }
-                        break;
-                    case 3://B VS C
-                        switch (randSet)
-                        {
-                            case 1://B WINS
-                                bHP = bHP - 25;
-                                cHP = 0;
-                                bScore = bScore + (10 * mandbc + (100 - bHP));
-                                b1State = "SURVIVOR";
-                                c1State = "DEFEATED";
-                                a1State = "NON-FIGHTER";
-                                c2State = "DEFEATED";
-                                versus = 1;//A vs B
-                                min = dab;
-                                break;
-                            case 4://B WINS
-                                bHP = bHP - 25;
-                                cHP = 0;
-                                bScore = bScore + (10 * mandbc + (100 - bHP));
-                                b1State = "SURVIVOR";
-                                c1State = "DEFEATED";
-                                a1State = "NON-FIGHTER";
-                                c2State = "DEFEATED";
-                                versus = 1;//A vs B
-                                min = dab;
-                                break;
-                            case 5://B WINS
-                                bHP = bHP - 25;
-                                cHP = 0;
-                                bScore = bScore + (10 * mandbc + (100 - bHP));
-                                b1State = "SURVIVOR";
-                                c1State = "DEFEATED";
-                                a1State = "NON-FIGHTER";
-                                c2State = "DEFEATED";
-                                versus = 1;//A vs B
-                                min = dab;
-                                break;
-                            default://C WINS
-                                cHP = cHP - 25;
-                                bHP = 0;
-                                cScore = cScore + (10 * mandbc + (100 - cHP));
-                                c1State = "SURVIVOR";
-                                b1State = "DEFEATED";
-                                a1State = "NON-FIGHTER";
-                                b2State = "DEFEATED";
-                                versus = 2;//A vs C
-                                min = dac;
-                                break;
-                        }
-
-                        break;
-
+                    if (randSet == 1 || randSet == 4 || randSet == 5)
+                    {
+                        aHP = aHP - 25;
+                        bHP = 0;
+                        aScore = aScore + (10 * mandab + (100 - aHP));
+                        a1State = "SURVIVOR";
+                        b1State = "DEFEATED";
+                        c1State = "NON-FIGHTER";
+                        b2State = "DEFEATED";
+                        versus = 2;//A vs C
+                        min = dac;
+                    }
+                    else
+                    {
+                        bHP = bHP - 25;
+                        aHP = 0;
+                        bScore = bScore + (10 * mandab + (100 - bHP));
+                        b1State = "SURVIVOR";
+                        a1State = "DEFEATED";
+                        c1State = "NON-FIGHTER";
+                        a2State = "DEFEATED";
+                        versus = 3;//B vs C
+                        min = dbc;
+                    }
+                }
+                else if (versus == 2)
+                {
+                    if (randSet == 2 || randSet == 3 || randSet == 6)
+                    {
+                        aHP = aHP - 25;
+                        cHP = 0;
+                        aScore = aScore + (10 * mandac + (100 - aHP));
+                        a1State = "SURVIVOR";
+                        c1State = "DEFEATED";
+                        b1State = "NON-FIGHTER";
+                        c2State = "DEFEATED";
+                        versus = 1;//A vs B
+                        min = dab;
+                    }
+                    else
+                    {
+                        cHP = cHP - 25;
+                        aHP = 0;
+                        cScore = cScore + (10 * mandac + (100 - cHP));
+                        c1State = "SURVIVOR";
+                        a1State = "DEFEATED";
+                        b1State = "NON-FIGHTER";
+                        a2State = "DEFEATED";
+                        versus = 3;//B vs C
+                        min = dbc;
+                    }
+                }
+                else if (versus == 3)
+                {
+                    if (randSet == 1 || randSet == 4 || randSet == 5)
+                    {
+                        bHP = bHP - 25;
+                        cHP = 0;
+                        bScore = bScore + (10 * mandbc + (100 - bHP));
+                        b1State = "SURVIVOR";
+                        c1State = "DEFEATED";
+                        a1State = "NON-FIGHTER";
+                        c2State = "DEFEATED";
+                        versus = 1;//A vs B
+                        min = dab;
+                    }
+                    else
+                    {
+                        cHP = cHP - 25;
+                        bHP = 0;
+                        cScore = cScore + (10 * mandbc + (100 - cHP));
+                        c1State = "SURVIVOR";
+                        b1State = "DEFEATED";
+                        a1State = "NON-FIGHTER";
+                        b2State = "DEFEATED";
+                        versus = 2;//A vs C
+                        min = dac;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("error");
                 }
 
                 
-                Console.WriteLine("A |\t Score : " + aScore + "\t HP : " + aHP + " \t | " + a1State);
-                Console.WriteLine("B |\t Score : " + bScore + "\t HP : " + bHP + " \t | " + b1State);
-                Console.WriteLine("C |\t Score : " + cScore + "\t HP : " + cHP + " \t | " + c1State);
 
-                switch (versus)// Takes the versus value changes it to string accordingly for display purposes.
+                //////////////////////
+
+                //SCOREBOARD FOR ROUND 1
+                Console.WriteLine("\n> A |\t| Score :     |\t| HP :     |\t|               | ");
+                Console.WriteLine("> B |\t| Score :     |\t| HP :     |\t|               | ");
+                Console.WriteLine("> C |\t| Score :     |\t| HP :     |\t|               | ");
+
+                //A
+                Console.SetCursorPosition(18, 33);
+                Console.WriteLine(aScore);
+
+                Console.SetCursorPosition(31, 33);
+                Console.WriteLine(aHP);
+
+                Console.SetCursorPosition(42, 33);
+                Console.WriteLine(a1State);
+
+                //B
+                Console.SetCursorPosition(18, 34);
+                Console.WriteLine(bScore);
+
+                Console.SetCursorPosition(31, 34);
+                Console.WriteLine(bHP);
+
+                Console.SetCursorPosition(42, 34);
+                Console.WriteLine(b1State);
+
+                //C
+                Console.SetCursorPosition(18, 35);
+                Console.WriteLine(cScore);
+
+                Console.SetCursorPosition(31, 35);
+                Console.WriteLine(cHP);
+
+                Console.SetCursorPosition(42, 35);
+                Console.WriteLine(c1State);
+
+                Console.SetCursorPosition(0, 37);//Puts the cursor back where it is supposed to be
+
+                //////////////////////
+
+                if (versus == 1)// Takes the versus value changes it to string accordingly for scoreboard.
                 {
-                    case 1:
-                        r2 = "A vs B";
-                        break;
-                    case 2:
-                        r2 = "A vs C";
-                        break;
-                    case 3:
-                        r2 = "B vs C";
-                        break;
+                    r2 = "A vs B";
+                }
+                else if (versus == 2)
+                {
+                    r2 = "A vs C";
+                }
+                else if (versus == 3)
+                {
+                    r2 = "B vs C";
                 }
 
                 if (min > 15)// Check for reach (distance<15)
                 {
-                    Console.WriteLine("NO FIGHT\nARCHERS TOO DISTANT");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("[NO FIGHT] : ARCHERS TOO DISTANT");
+                    Console.ForegroundColor = ConsoleColor.Yellow;//Changes font colour
+                    Console.ReadKey();
                 }
                 else
                 {
-                    Console.WriteLine("ROUND 2 :\t" + r2);
-                    switch (versus)//ROUND 2
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.Write("[ROUND 2] : ");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(r2);
+                    Console.ForegroundColor = ConsoleColor.Yellow;//Changes font colour
+                    Console.ReadKey();
+
+
+
+                    if(versus == 1)
                     {
-                        case 1://A VS B
-                            switch (randSet)
-                            {
-                                case 1://A WINS
-                                    aHP = aHP - 25;
-                                    bHP = 0;
-                                    aScore = aScore + (10 * mandab + (100 - aHP));
-                                    a2State = "SURVIVOR";
-                                    b2State = "DEFEATED";
-                                    c2State = "NON-FIGHTER";
-                                    versus = 2;//A vs C
-                                    break;
-                                case 4://A WINS
-                                    aHP = aHP - 25;
-                                    bHP = 0;
-                                    aScore = aScore + (10 * mandab + (100 - aHP));
-                                    a2State = "SURVIVOR";
-                                    b2State = "DEFEATED";
-                                    c2State = "NON-FIGHTER";
-                                    versus = 2;//A vs C
-                                    break;
-                                case 5://A WINS
-                                    aHP = aHP - 25;
-                                    bHP = 0;
-                                    aScore = aScore + (10 * mandab + (100 - aHP));
-                                    a2State = "SURVIVOR";
-                                    b2State = "DEFEATED";
-                                    c2State = "NON-FIGHTER";
-                                    versus = 2;//A vs C
-                                    break;
-                                default://B WINS
-                                    bHP = bHP - 25;
-                                    aHP = 0;
-                                    bScore = bScore + (10 * mandab + (100 - bHP));
-                                    b2State = "SURVIVOR";
-                                    a2State = "DEFEATED";
-                                    c2State = "NON-FIGHTER";
-                                    versus = 3;//B vs C
-                                    break;
-                            }
-                            break;
-                        case 2://A VS C
-                            switch (randSet)
-                            {
-                                case 2://A WINS
-                                    aHP = aHP - 25;
-                                    cHP = 0;
-                                    aScore = aScore + (10 * mandac + (100 - aHP));
-                                    a2State = "SURVIVOR";
-                                    c2State = "DEFEATED";
-                                    b2State = "NON-FIGHTER";
-                                    versus = 1;//A vs B
-                                    break;
-                                case 3://A WINS
-                                    aHP = aHP - 25;
-                                    cHP = 0;
-                                    aScore = aScore + (10 * mandac + (100 - aHP));
-                                    a2State = "SURVIVOR";
-                                    c2State = "DEFEATED";
-                                    b2State = "NON-FIGHTER";
-                                    versus = 1;//A vs B
-                                    break;
-                                case 6://A WINS
-                                    aHP = aHP - 25;
-                                    cHP = 0;
-                                    aScore = aScore + (10 * mandac + (100 - aHP));
-                                    a2State = "SURVIVOR";
-                                    b2State = "NON-FIGHTER";
-                                    c2State = "DEFEATED";
-                                    versus = 1;//A vs B
-                                    break;
-                                default://C WINS
-                                    cHP = cHP - 25;
-                                    aHP = 0;
-                                    cScore = cScore + (10 * mandac + (100 - cHP));
-                                    c2State = "SURVIVOR";
-                                    a2State = "DEFEATED";
-                                    b2State = "NON-FIGHTER";
-                                    versus = 3;//B vs C
-                                    break;
-                            }
-                            break;
-                        case 3://B VS C
-                            switch (randSet)
-                            {
-                                case 1://B WINS
-                                    bHP = bHP - 25;
-                                    cHP = 0;
-                                    bScore = bScore + (10 * mandbc + (100 - bHP));
-                                    b2State = "SURVIVOR";
-                                    c2State = "DEFEATED";
-                                    a2State = "NON-FIGHTER";                                    
-                                    versus = 1;//A vs B
-                                    break;
-                                case 4://B WINS
-                                    bHP = bHP - 25;
-                                    cHP = 0;
-                                    bScore = bScore + (10 * mandbc + (100 - bHP));
-                                    b2State = "SURVIVOR";
-                                    c2State = "DEFEATED";
-                                    a2State = "NON-FIGHTER";
-                                    versus = 1;//A vs B
-                                    break;
-                                case 5://B WINS
-                                    bHP = bHP - 25;
-                                    cHP = 0;
-                                    bScore = bScore + (10 * mandbc + (100 - bHP));
-                                    b2State = "SURVIVOR";
-                                    c2State = "DEFEATED";
-                                    a2State = "NON-FIGHTER";
-                                    versus = 1;//A vs B
-                                    break;
-                                default://C WINS
-                                    cHP = cHP - 25;
-                                    bHP = 0;
-                                    cScore = cScore + (10 * mandbc + (100 - cHP));
-                                    c2State = "SURVIVOR";
-                                    b2State = "DEFEATED";
-                                    a2State = "NON-FIGHTER;";
-                                    versus = 2;//A vs C
-                                    break;
-                            }
-
-                            break;
-
+                        if(randSet == 1 || randSet == 4 || randSet == 5)
+                        {
+                            aHP = aHP - 25;
+                            bHP = 0;
+                            aScore = aScore + (10 * mandab + (100 - aHP));
+                            a2State = "SURVIVOR";
+                            b2State = "DEFEATED";
+                            c2State = "NON-FIGHTER";
+                            versus = 2;//A vs C
+                        }
+                        else
+                        {
+                            bHP = bHP - 25;
+                            aHP = 0;
+                            bScore = bScore + (10 * mandab + (100 - bHP));
+                            b2State = "SURVIVOR";
+                            a2State = "DEFEATED";
+                            c2State = "NON-FIGHTER";
+                            versus = 3;//B vs C
+                        }
                     }
-
-                    switch (versus)// Takes the versus value changes it to string accordingly for display purposes.
+                    else if(versus == 2)
                     {
-                        case 1:
-                            r2 = "A vs B";
-                            break;
-                        case 2:
-                            r2 = "A vs C";
-                            break;
-                        case 3:
-                            r2 = "B vs C";
-                            break;
+                        if (randSet == 2 || randSet == 3 || randSet == 6)
+                        {
+                            aHP = aHP - 25;
+                            cHP = 0;
+                            aScore = aScore + (10 * mandac + (100 - aHP));
+                            a2State = "SURVIVOR";
+                            c2State = "DEFEATED";
+                            b2State = "NON-FIGHTER";
+                            versus = 1;//A vs B
+                        }
+                        else
+                        {
+                            cHP = cHP - 25;
+                            aHP = 0;
+                            cScore = cScore + (10 * mandac + (100 - cHP));
+                            c2State = "SURVIVOR";
+                            a2State = "DEFEATED";
+                            b2State = "NON-FIGHTER";
+                            versus = 3;//B vs C
+                        }
                     }
-
-
-
+                    else if(versus == 3)
+                    {
+                        if (randSet == 2 || randSet == 3 || randSet == 6)
+                        {
+                            bHP = bHP - 25;
+                            cHP = 0;
+                            bScore = bScore + (10 * mandbc + (100 - bHP));
+                            b2State = "SURVIVOR";
+                            c2State = "DEFEATED";
+                            a2State = "NON-FIGHTER";
+                            versus = 1;//A vs B
+                        }
+                        else
+                        {
+                            cHP = cHP - 25;
+                            bHP = 0;
+                            cScore = cScore + (10 * mandbc + (100 - cHP));
+                            c2State = "SURVIVOR";
+                            b2State = "DEFEATED";
+                            a2State = "NON-FIGHTER;";
+                            versus = 2;//A vs C
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("error");
+                    }
 
                 }
 
-
             }
-            
-            Console.WriteLine("A |\t Score : " + aScore + "\t HP : " + aHP + "\t | " + a2State);
-            Console.WriteLine("B |\t Score : " + bScore + "\t HP : " + bHP + "\t | " + b2State);
-            Console.WriteLine("C |\t Score : " + cScore + "\t HP : " + cHP + "\t | " + c2State);
+
+            Console.WriteLine("\n> A |\t| Score :     |\t| HP :     |\t|               | ");
+            Console.WriteLine("> B |\t| Score :     |\t| HP :     |\t|               | ");
+            Console.WriteLine("> C |\t| Score :     |\t| HP :     |\t|               | ");
+
+            Console.SetCursorPosition(18, 39);
+            Console.WriteLine(aScore);
+            Console.SetCursorPosition(31, 39);
+            Console.WriteLine(aHP);
+            Console.SetCursorPosition(42, 39);
+            Console.WriteLine(a2State);
+
+            Console.SetCursorPosition(18, 40);
+            Console.WriteLine(bScore);
+            Console.SetCursorPosition(31, 40);
+            Console.WriteLine(bHP);
+            Console.SetCursorPosition(42, 40);
+            Console.WriteLine(b2State);
+
+            Console.SetCursorPosition(18, 41);
+            Console.WriteLine(cScore);
+            Console.SetCursorPosition(31, 41);
+            Console.WriteLine(cHP);
+            Console.SetCursorPosition(42, 41);
+            Console.WriteLine(c2State);
+
+        
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\n\tPRESS ANY BUTTON TO END");
+            Console.ReadKey();
+
         }
     }
 }
