@@ -49,7 +49,7 @@ namespace archer
 
             tempx = Console.ReadLine();
 
-            if(tempx == "10" || tempx == "9" || tempx == "8" || tempx == "7" || tempx == "6" || tempx == "5" || tempx == "4" || tempx == "3" || tempx == "2" || tempx == "1" || tempx == "0" || tempx == "-1" || tempx == "-2" || tempx == "-2" || tempx == "-3" || tempx == "-4" || tempx == "-5" || tempx == "-6" || tempx == "-7" || tempx == "-8" || tempx == "-9" || tempx == "-10")
+            if (tempx == "10" || tempx == "9" || tempx == "8" || tempx == "7" || tempx == "6" || tempx == "5" || tempx == "4" || tempx == "3" || tempx == "2" || tempx == "1" || tempx == "0" || tempx == "-1" || tempx == "-2" || tempx == "-2" || tempx == "-3" || tempx == "-4" || tempx == "-5" || tempx == "-6" || tempx == "-7" || tempx == "-8" || tempx == "-9" || tempx == "-10")
             {
                 checkx = true;
                 ax = Convert.ToInt32(tempx);
@@ -118,7 +118,7 @@ namespace archer
             by = rnd.Next(-10, 11);
             cx = rnd.Next(-10, 11);
             cy = rnd.Next(-10, 11);
-            
+
             /*FOR DEBUG
             bx = 10;
             by = 10;
@@ -185,38 +185,38 @@ namespace archer
             int randSet = 0;// This is for assigning random values of sets to A, B and C without repetition
             randSet = rnd.Next(1, 7);//Just like HP there are 6 permutations for sets {1,2,3}
 
-            if(randSet == 1)// Takes the random value 1 through 6 then assigns values accordingly
+            if (randSet == 1)// Takes the random value 1 through 6 then assigns values accordingly
             {
                 aSet = 1;
                 bSet = 2;
                 cSet = 3;
             }
-            else if(randSet == 2)
+            else if (randSet == 2)
             {
                 aSet = 1;
                 bSet = 3;
                 cSet = 2;
 
             }
-            else if(randSet == 3)
+            else if (randSet == 3)
             {
                 aSet = 2;
                 bSet = 1;
                 cSet = 3;
             }
-            else if(randSet == 4)
+            else if (randSet == 4)
             {
                 aSet = 2;
                 bSet = 3;
                 cSet = 1;
             }
-            else if(randSet == 5)
+            else if (randSet == 5)
             {
                 aSet = 3;
                 bSet = 1;
                 cSet = 2;
             }
-            else if(randSet == 6)
+            else if (randSet == 6)
             {
                 aSet = 3;
                 bSet = 2;
@@ -297,7 +297,7 @@ namespace archer
             int mandbc = Math.Abs(bx - cx) + Math.Abs(by - cy);//Manhattan Distance between B and C
 
             //////////////////////
-            
+
 
             //////////////////////
             //MAP FOR THE ARCHERS
@@ -495,7 +495,7 @@ namespace archer
                     Console.WriteLine("error");
                 }
 
-                
+
 
                 //////////////////////
 
@@ -569,9 +569,9 @@ namespace archer
 
 
 
-                    if(versus == 1)
+                    if (versus == 1)
                     {
-                        if(randSet == 1 || randSet == 4 || randSet == 5)
+                        if (randSet == 1 || randSet == 4 || randSet == 5)
                         {
                             aHP = aHP - 25;
                             bHP = 0;
@@ -592,7 +592,7 @@ namespace archer
                             versus = 3;//B vs C
                         }
                     }
-                    else if(versus == 2)
+                    else if (versus == 2)
                     {
                         if (randSet == 2 || randSet == 3 || randSet == 6)
                         {
@@ -615,7 +615,7 @@ namespace archer
                             versus = 3;//B vs C
                         }
                     }
-                    else if(versus == 3)
+                    else if (versus == 3)
                     {
                         if (randSet == 2 || randSet == 3 || randSet == 6)
                         {
@@ -672,7 +672,31 @@ namespace archer
             Console.SetCursorPosition(42, 41);
             Console.WriteLine(c2State);
 
-        
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            if (aScore>bScore && aScore > cScore)
+            {
+                Console.WriteLine("\n\t||Winner :  A    ||\n\t||Score  :       ||");
+                Console.SetCursorPosition(20, 44);
+                Console.WriteLine(aScore);
+            }
+            else if (bScore > aScore && bScore > cScore)
+            {
+                Console.WriteLine("\n\t||Winner :  B    ||\n\t||Score  :       ||");
+                Console.SetCursorPosition(20, 44);
+                Console.WriteLine(bScore);
+            }
+            else if (cScore > bScore && cScore > aScore)
+            {
+                Console.WriteLine("\n\t||Winner :  C    ||\n\t||Score  :       ||");
+                Console.SetCursorPosition(20, 44);
+                Console.WriteLine(cScore);
+            }
+            else
+            {
+                Console.WriteLine("\n\t||Winner : C ||\n\t||Score : \t||");
+            }
+
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("\n\tPRESS ANY BUTTON TO END");
             Console.ReadKey();
