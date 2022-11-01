@@ -1,6 +1,4 @@
-using Microsoft.VisualBasic;
 using System;
-using System.Dynamic;
 
 namespace finished
 {
@@ -31,10 +29,10 @@ namespace finished
             int score_a = 0, score_b = 0, score_c = 0, max_score = 0;
 
             //COLOR STATEMENTS
-            var set1=ConsoleColor.Yellow;
-            var set2=ConsoleColor.Magenta;
-            var set3=ConsoleColor.Red;
-            var reset=ConsoleColor.White;
+            //var set1=ConsoleColor.Cyan;
+            //var set2=ConsoleColor.DarkYellow;
+            //var set3=ConsoleColor.Yellow;
+            //var ConsoleColor.White=ConsoleColor.White;
 
 
             //COORDINATES OF B AND C
@@ -47,12 +45,8 @@ namespace finished
             //TAKING COORDINATES FROM PLAYER (A) AND CHECKING
             Console.Write("Ax:");
             ax = Console.ReadLine();
-            //bool result = int.TryParse(ax, out Ax);
-            //bool result = Char.IsDigit(ax, 0);
-            //bool result= typeof
             bool result=Information.IsNumeric(ax);
-            //ax == "-10" || ax == "-9" || ax == "-8" || ax == "-7" || ax == "-6" || ax == "-5" || ax == "-4" || ax == "-3" || ax == "-2" || ax == "-1" || ax == "0" || ax == "1" || ax == "2" || ax == "3" || ax == "4" || ax == "5" || ax == "6" || ax == "7" || ax == "8" || ax == "9" || ax == "10"
-            if (result) 
+            if (ax == "-10" || ax == "-9" || ax == "-8" || ax == "-7" || ax == "-6" || ax == "-5" || ax == "-4" || ax == "-3" || ax == "-2" || ax == "-1" || ax == "0" || ax == "1" || ax == "2" || ax == "3" || ax == "4" || ax == "5" || ax == "6" || ax == "7" || ax == "8" || ax == "9" || ax == "10") 
             { Ax = Convert.ToInt32(ax); }
             else
             {
@@ -65,11 +59,8 @@ namespace finished
             Console.SetCursorPosition(8,0);
             Console.Write("Ay:");
             ay = Console.ReadLine();
-            //result = int.TryParse(ay, out Ay);
-            //result= Char.IsDigit(ay, 0);
             result=Information.IsNumeric(ay);
-            //ay == "-10" || ay == "-9" || ay == "-8" || ay == "-7" || ay == "-6" || ay == "-5" || ay == "-4" || ay == "-3" || ay == "-2" || ay == "-1" || ay == "0" || ay == "1" || ay == "2" || ay == "3" || ay == "4" || ay == "5" || ay == "6" || ay == "7" || ay == "8" || ay == "9" || ay == "10"
-            if (result)
+            if (ay == "-10" || ay == "-9" || ay == "-8" || ay == "-7" || ay == "-6" || ay == "-5" || ay == "-4" || ay == "-3" || ay == "-2" || ay == "-1" || ay == "0" || ay == "1" || ay == "2" || ay == "3" || ay == "4" || ay == "5" || ay == "6" || ay == "7" || ay == "8" || ay == "9" || ay == "10")
             { Ay = Convert.ToInt32(ay); }
             else
             {
@@ -79,12 +70,6 @@ namespace finished
             }
 
             //CHEKING COORDINATES
-            if ((Ax > 10 || Ay > 10) || (Ax < -10 || Ax < -10))
-            {
-                Console.WriteLine("You wrote wrong numbers please when you open the game write right numbers (-10 to 10)!");
-                Console.ReadKey();
-                Environment.Exit(0);
-            }
             if (Ax == Bx || Ay == By || Bx == Cx || Cy == By)
             {
                 Bx = rand.Next(-10, 10);
@@ -130,27 +115,27 @@ namespace finished
 
             //SHOWING STATEMENTS
             /////////////////////////COLOR FOR A////////////////////////////
-             if(a=="Set 1") Console.ForegroundColor=set1;
-            else if(a=="Set 2") Console.ForegroundColor=set2;
-            else Console.ForegroundColor=set3;
+             if(a=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
+            else if(a=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+            else Console.ForegroundColor=ConsoleColor.Yellow;
              /////////////////////////////////////////////////////////////////////////////
             Console.WriteLine("A:(" + Ax + "," + Ay + ")" + " \tSet:" + a + " \tHealth:" + hpa + " ");
 
             /////////////////////////COLOR FOR B////////////////////////////
-             if(b=="Set 1") Console.ForegroundColor=set1;
-            else if(b=="Set 2") Console.ForegroundColor=set2;
-            else Console.ForegroundColor=set3;
+             if(b=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
+            else if(b=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+            else Console.ForegroundColor=ConsoleColor.Yellow;
              /////////////////////////////////////////////////////////////////////////////
             Console.WriteLine("B:(" + Bx + "," + By + ")" + " \tSet:" + b + " \tHealth:" + hpb + " ");
 
             /////////////////////////COLOR FOR C////////////////////////////
-            if(c=="Set 1") Console.ForegroundColor=set1;
-            else if(c=="Set 2") Console.ForegroundColor=set2;
-            else Console.ForegroundColor=set3;
+            if(c=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
+            else if(c=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+            else Console.ForegroundColor=ConsoleColor.Yellow;
             /////////////////////////////////////////////////////////////////////////////
             Console.WriteLine("C:(" + Cx + "," + Cy + ")" + " \tSet:" + c + " \tHealth:" + hpc + " ");
 
-            Console.ForegroundColor=reset;
+            Console.ForegroundColor=ConsoleColor.White;
 
             //SHOWING COORDINATES IN COORDINATE TABLE
             Console.WriteLine(
@@ -181,25 +166,25 @@ namespace finished
             ///////////////////////////////////////////////////////////////////////
             ////////////////////////////COLOR AND POSITION FOR A////////////////////////////
             Console.SetCursorPosition((Ax*2) +25, 15 - Ay);
-            if(a=="Set 1") Console.ForegroundColor=set1;
-            else if(a=="Set 2") Console.ForegroundColor=set2;
-            else Console.ForegroundColor=set3;
+            if(a=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
+            else if(a=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+            else Console.ForegroundColor=ConsoleColor.Yellow;
             /////////////////////////////////////////////////////////////////////////
             Console.WriteLine("A");
 
             ////////////////////////////COLOR AND POSITION FOR B////////////////////////////
             Console.SetCursorPosition((Bx*2) + 25, 15 - By);
-            if(b=="Set 1") Console.ForegroundColor=set1;
-            else if(b=="Set 2") Console.ForegroundColor=set2;
-            else Console.ForegroundColor=set3;
+            if(b=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
+            else if(b=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+            else Console.ForegroundColor=ConsoleColor.Yellow;
             /////////////////////////////////////////////////////////////////////////
             Console.WriteLine("B");
 
             ////////////////////////////COLOR AND POSITION FOR C////////////////////////////
             Console.SetCursorPosition((Cx*2) + 25, 15 - Cy);
-            if(c=="Set 1") Console.ForegroundColor=set1;
-            else if(c=="Set 2") Console.ForegroundColor=set2;
-            else Console.ForegroundColor=set3;
+            if(c=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
+            else if(c=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+            else Console.ForegroundColor=ConsoleColor.Yellow;
             /////////////////////////////////////////////////////////////////////////
             Console.WriteLine("C");
 
@@ -343,29 +328,29 @@ namespace finished
             else { no_fight = true; }
 
             if (no_fight == false) {
-
-                 if(a=="Set 1") Console.ForegroundColor=set1;
-                 else if(a=="Set 2") Console.ForegroundColor=set2;
-                 else Console.ForegroundColor=set3;
-
+                //////////////////////////////////////////////////////////////////////////////////
+                 if(a=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
+                 else if(a=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+                 else Console.ForegroundColor=ConsoleColor.Yellow;
+                //////////////////////////////////////////////////////////////////////////////////
                 Console.WriteLine("A:" + ast + " \tHealth:" + hpa + " \tScore:" + score_a + " ");
-
-                 if(b=="Set 1") Console.ForegroundColor=set1;
-                 else if(b=="Set 2") Console.ForegroundColor=set2;
-                 else Console.ForegroundColor=set3;
-
+                //////////////////////////////////////////////////////////////////////////////////
+                 if(b=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
+                 else if(b=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+                 else Console.ForegroundColor=ConsoleColor.Yellow;
+                 //////////////////////////////////////////////////////////////////////////////////
                 Console.WriteLine("B:" + bst + " \tHealth:" + hpb + " \tScore:" + score_b + " ");
-
-                 if(c=="Set 1") Console.ForegroundColor=set1;
-                 else if(c=="Set 2") Console.ForegroundColor=set2;
-                 else Console.ForegroundColor=set3;
-
+                 //////////////////////////////////////////////////////////////////////////////////
+                 if(c=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
+                 else if(c=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+                 else Console.ForegroundColor=ConsoleColor.Yellow;
+                 //////////////////////////////////////////////////////////////////////////////////
                 Console.WriteLine("C:" + cst + " \tHealth:" + hpc + " \tScore:" + score_c + " "); }
 
-            else if (no_fight == true) { Console.ForegroundColor=reset; Console.WriteLine("All players are too distant so, No Fight!"); }
+            else if (no_fight == true) { Console.ForegroundColor=ConsoleColor.White; Console.WriteLine("All players are too distant so, No Fight!"); }
             Console.WriteLine("\n");
             Console.ReadKey();
-            Console.ForegroundColor=reset;
+            Console.ForegroundColor=ConsoleColor.White;
 
             //ROUND 2
             Console.Write("ROUND 2: ");
@@ -430,25 +415,25 @@ namespace finished
             
             if (no_fight==false) {
 
-                 if(a=="Set 1") Console.ForegroundColor=set1;
-                 else if(a=="Set 2") Console.ForegroundColor=set2;
-                 else Console.ForegroundColor=set3;
+                 if(a=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
+                 else if(a=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+                 else Console.ForegroundColor=ConsoleColor.Yellow;
 
                 Console.WriteLine("A:" + ast + " \tHealth:" + hpa + " \tScore:" + score_a + " ");
 
-                 if(b=="Set 1") Console.ForegroundColor=set1;
-                 else if(b=="Set 2") Console.ForegroundColor=set2;
-                 else Console.ForegroundColor=set3;
+                 if(b=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
+                 else if(b=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+                 else Console.ForegroundColor=ConsoleColor.Yellow;
 
                 Console.WriteLine("B:" + bst + " \tHealth:" + hpb + " \tScore:" + score_b + " ");
 
-                 if(c=="Set 1") Console.ForegroundColor=set1;
-                 else if(c=="Set 2") Console.ForegroundColor=set2;
-                 else Console.ForegroundColor=set3;
+                 if(c=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
+                 else if(c=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+                 else Console.ForegroundColor=ConsoleColor.Yellow;
 
                 Console.WriteLine("C:" + cst + " \tHealth:" + hpc + " \tScore:" + score_c + " "); }
 
-            else if(no_fight==true){ Console.ForegroundColor=reset;Console.WriteLine("All players are too distant so, No Fight!"); }
+            else if(no_fight==true){ Console.ForegroundColor=ConsoleColor.White;Console.WriteLine("All players are too distant so, No Fight!"); }
             Console.WriteLine("\n");
             Console.ForegroundColor=ConsoleColor.Green;
             
