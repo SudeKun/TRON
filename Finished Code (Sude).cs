@@ -45,7 +45,6 @@ namespace finished
             //TAKING COORDINATES FROM PLAYER (A) AND CHECKING
             Console.Write("Ax:");
             ax = Console.ReadLine();
-            bool result=Information.IsNumeric(ax);
             if (ax == "-10" || ax == "-9" || ax == "-8" || ax == "-7" || ax == "-6" || ax == "-5" || ax == "-4" || ax == "-3" || ax == "-2" || ax == "-1" || ax == "0" || ax == "1" || ax == "2" || ax == "3" || ax == "4" || ax == "5" || ax == "6" || ax == "7" || ax == "8" || ax == "9" || ax == "10") 
             { Ax = Convert.ToInt32(ax); }
             else
@@ -59,7 +58,6 @@ namespace finished
             Console.SetCursorPosition(8,0);
             Console.Write("Ay:");
             ay = Console.ReadLine();
-            result=Information.IsNumeric(ay);
             if (ay == "-10" || ay == "-9" || ay == "-8" || ay == "-7" || ay == "-6" || ay == "-5" || ay == "-4" || ay == "-3" || ay == "-2" || ay == "-1" || ay == "0" || ay == "1" || ay == "2" || ay == "3" || ay == "4" || ay == "5" || ay == "6" || ay == "7" || ay == "8" || ay == "9" || ay == "10")
             { Ay = Convert.ToInt32(ay); }
             else
