@@ -28,13 +28,6 @@ namespace finished
             //SCORE STATEMENTS
             int score_a = 0, score_b = 0, score_c = 0, max_score = 0;
 
-            //COLOR STATEMENTS
-            //var set1=ConsoleColor.Cyan;
-            //var set2=ConsoleColor.DarkYellow;
-            //var set3=ConsoleColor.Yellow;
-            //var ConsoleColor.White=ConsoleColor.White;
-
-
             //COORDINATES OF B AND C
             Random rand = new Random();
             Bx = rand.Next(-10, 11);
@@ -43,6 +36,7 @@ namespace finished
             Cy = rand.Next(-10, 11);
 
             //TAKING COORDINATES FROM PLAYER (A) AND CHECKING
+            Console.WriteLine("Please Enter The Location");
             Console.Write("Ax:");
             ax = Console.ReadLine();
             if (ax == "-10" || ax == "-9" || ax == "-8" || ax == "-7" || ax == "-6" || ax == "-5" || ax == "-4" || ax == "-3" || ax == "-2" || ax == "-1" || ax == "0" || ax == "1" || ax == "2" || ax == "3" || ax == "4" || ax == "5" || ax == "6" || ax == "7" || ax == "8" || ax == "9" || ax == "10") 
@@ -55,7 +49,7 @@ namespace finished
             }
 
             ///////////////////////////////////////////////////
-            Console.SetCursorPosition(8,0);
+            Console.SetCursorPosition(8,1);
             Console.Write("Ay:");
             ay = Console.ReadLine();
             if (ay == "-10" || ay == "-9" || ay == "-8" || ay == "-7" || ay == "-6" || ay == "-5" || ay == "-4" || ay == "-3" || ay == "-2" || ay == "-1" || ay == "0" || ay == "1" || ay == "2" || ay == "3" || ay == "4" || ay == "5" || ay == "6" || ay == "7" || ay == "8" || ay == "9" || ay == "10")
@@ -70,13 +64,13 @@ namespace finished
             //CHEKING COORDINATES
             if (Ax == Bx || Ay == By || Bx == Cx || Cy == By)
             {
-                Bx = rand.Next(-10, 10);
-                By = rand.Next(-10, 10);
+                Bx = rand.Next(-10, 11);
+                By = rand.Next(-10, 11);
             }
             if (Ax == Cx || Ay == Cy || Bx == Cx || Cy == By)
             {
-                Cx = rand.Next(-10, 10);
-                Cy = rand.Next(-10, 10);
+                Cx = rand.Next(-10, 11);
+                Cy = rand.Next(-10, 11);
             }
 
             //SETS HEALTH STATEMENTS
@@ -93,12 +87,12 @@ namespace finished
             //SETS SET STATEMENTS
             set = rand.Next(1, 7);
 
-            if (set == 1) { a = ("Set 1"); b = ("Set 2"); c = ("Set 3"); }
-            else if (set == 2) { a = ("Set 1"); b = ("Set 3"); c = ("Set 2"); }
-            else if (set == 3) { a = ("Set 2"); b = ("Set 1"); c = ("Set 3"); }
-            else if (set == 4) { a = ("Set 2"); b = ("Set 3"); c = ("Set 1"); }
-            else if (set == 5) { a = ("Set 3"); b = ("Set 2"); c = ("Set 1"); }
-            else if (set == 6) { a = ("Set 3"); b = ("Set 1"); c = ("Set 2"); }
+            if (set == 1) { a = ("Disc"); b = ("Baton"); c = ("Staff"); }
+            else if (set == 2) { a = ("Disc"); b = ("Staff"); c = ("Baton"); }
+            else if (set == 3) { a = ("Baton"); b = ("Disc"); c = ("Staff"); }
+            else if (set == 4) { a = ("Baton"); b = ("Staff"); c = ("Disc"); }
+            else if (set == 5) { a = ("Staff"); b = ("Baton"); c = ("Disc"); }
+            else if (set == 6) { a = ("Staff"); b = ("Disc"); c = ("Baton"); }
             else { Console.WriteLine("Sorry machine error"); }
 
             //EUCLIDEAN DISTENCE CALCULATION
@@ -113,22 +107,22 @@ namespace finished
 
             //SHOWING STATEMENTS
             /////////////////////////COLOR FOR A////////////////////////////
-             if(a=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
-            else if(a=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+             if(a=="Disc") Console.ForegroundColor=ConsoleColor.Cyan;
+            else if(a=="Baton") Console.ForegroundColor=ConsoleColor.DarkYellow;
             else Console.ForegroundColor=ConsoleColor.Yellow;
              /////////////////////////////////////////////////////////////////////////////
             Console.WriteLine("A:(" + Ax + "," + Ay + ")" + " \tSet:" + a + " \tHealth:" + hpa + " ");
 
             /////////////////////////COLOR FOR B////////////////////////////
-             if(b=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
-            else if(b=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+             if(b=="Disc") Console.ForegroundColor=ConsoleColor.Cyan;
+            else if(b=="Baton") Console.ForegroundColor=ConsoleColor.DarkYellow;
             else Console.ForegroundColor=ConsoleColor.Yellow;
              /////////////////////////////////////////////////////////////////////////////
             Console.WriteLine("B:(" + Bx + "," + By + ")" + " \tSet:" + b + " \tHealth:" + hpb + " ");
 
             /////////////////////////COLOR FOR C////////////////////////////
-            if(c=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
-            else if(c=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+            if(c=="Disc") Console.ForegroundColor=ConsoleColor.Cyan;
+            else if(c=="Baton") Console.ForegroundColor=ConsoleColor.DarkYellow;
             else Console.ForegroundColor=ConsoleColor.Yellow;
             /////////////////////////////////////////////////////////////////////////////
             Console.WriteLine("C:(" + Cx + "," + Cy + ")" + " \tSet:" + c + " \tHealth:" + hpc + " ");
@@ -161,27 +155,26 @@ namespace finished
                 "-10| . . . . . . . . . . | . . . . . . . . . . |\r\n" +
                 "   + - - - - - - - - - - - - - - - - - - - - - +\r\n " +
                 "  -10 9 8 7 6 5 4 3 2 1 0 1 2 3 4 5 6 7 8 9 10\r\n");
-            ///////////////////////////////////////////////////////////////////////
             ////////////////////////////COLOR AND POSITION FOR A////////////////////////////
-            Console.SetCursorPosition((Ax*2) +25, 15 - Ay);
-            if(a=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
-            else if(a=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+            Console.SetCursorPosition((Ax*2) + 25, 16 - Ay);
+            if(a=="Disc") Console.ForegroundColor=ConsoleColor.Cyan;
+            else if(a=="Baton") Console.ForegroundColor=ConsoleColor.DarkYellow;
             else Console.ForegroundColor=ConsoleColor.Yellow;
             /////////////////////////////////////////////////////////////////////////
             Console.WriteLine("A");
 
             ////////////////////////////COLOR AND POSITION FOR B////////////////////////////
-            Console.SetCursorPosition((Bx*2) + 25, 15 - By);
-            if(b=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
-            else if(b=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+            Console.SetCursorPosition((Bx*2) + 25, 16 - By);
+            if(b=="Disc") Console.ForegroundColor=ConsoleColor.Cyan;
+            else if(b=="Baton") Console.ForegroundColor=ConsoleColor.DarkYellow;
             else Console.ForegroundColor=ConsoleColor.Yellow;
             /////////////////////////////////////////////////////////////////////////
             Console.WriteLine("B");
 
             ////////////////////////////COLOR AND POSITION FOR C////////////////////////////
-            Console.SetCursorPosition((Cx*2) + 25, 15 - Cy);
-            if(c=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
-            else if(c=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+            Console.SetCursorPosition((Cx*2) + 25, 16 - Cy);
+            if(c=="Disc") Console.ForegroundColor=ConsoleColor.Cyan;
+            else if(c=="Baton") Console.ForegroundColor=ConsoleColor.DarkYellow;
             else Console.ForegroundColor=ConsoleColor.Yellow;
             /////////////////////////////////////////////////////////////////////////
             Console.WriteLine("C");
@@ -327,20 +320,20 @@ namespace finished
 
             if (no_fight == false) {
                 //////////////////////////////////////////////////////////////////////////////////
-                 if(a=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
-                 else if(a=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+                 if(a=="Disc") Console.ForegroundColor=ConsoleColor.Cyan;
+                 else if(a=="Baton") Console.ForegroundColor=ConsoleColor.DarkYellow;
                  else Console.ForegroundColor=ConsoleColor.Yellow;
                 //////////////////////////////////////////////////////////////////////////////////
                 Console.WriteLine("A:" + ast + " \tHealth:" + hpa + " \tScore:" + score_a + " ");
                 //////////////////////////////////////////////////////////////////////////////////
-                 if(b=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
-                 else if(b=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+                 if(b=="Disc") Console.ForegroundColor=ConsoleColor.Cyan;
+                 else if(b=="Baton") Console.ForegroundColor=ConsoleColor.DarkYellow;
                  else Console.ForegroundColor=ConsoleColor.Yellow;
                  //////////////////////////////////////////////////////////////////////////////////
                 Console.WriteLine("B:" + bst + " \tHealth:" + hpb + " \tScore:" + score_b + " ");
                  //////////////////////////////////////////////////////////////////////////////////
-                 if(c=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
-                 else if(c=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+                 if(c=="Disc") Console.ForegroundColor=ConsoleColor.Cyan;
+                 else if(c=="Baton") Console.ForegroundColor=ConsoleColor.DarkYellow;
                  else Console.ForegroundColor=ConsoleColor.Yellow;
                  //////////////////////////////////////////////////////////////////////////////////
                 Console.WriteLine("C:" + cst + " \tHealth:" + hpc + " \tScore:" + score_c + " "); }
@@ -413,20 +406,20 @@ namespace finished
             
             if (no_fight==false) {
 
-                 if(a=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
-                 else if(a=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+                 if(a=="Disc") Console.ForegroundColor=ConsoleColor.Cyan;
+                 else if(a=="Baton") Console.ForegroundColor=ConsoleColor.DarkYellow;
                  else Console.ForegroundColor=ConsoleColor.Yellow;
 
                 Console.WriteLine("A:" + ast + " \tHealth:" + hpa + " \tScore:" + score_a + " ");
 
-                 if(b=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
-                 else if(b=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+                 if(b=="Disc") Console.ForegroundColor=ConsoleColor.Cyan;
+                 else if(b=="Baton") Console.ForegroundColor=ConsoleColor.DarkYellow;
                  else Console.ForegroundColor=ConsoleColor.Yellow;
 
                 Console.WriteLine("B:" + bst + " \tHealth:" + hpb + " \tScore:" + score_b + " ");
 
-                 if(c=="Set 1") Console.ForegroundColor=ConsoleColor.Cyan;
-                 else if(c=="Set 2") Console.ForegroundColor=ConsoleColor.DarkYellow;
+                 if(c=="Disc") Console.ForegroundColor=ConsoleColor.Cyan;
+                 else if(c=="Baton") Console.ForegroundColor=ConsoleColor.DarkYellow;
                  else Console.ForegroundColor=ConsoleColor.Yellow;
 
                 Console.WriteLine("C:" + cst + " \tHealth:" + hpc + " \tScore:" + score_c + " "); }
